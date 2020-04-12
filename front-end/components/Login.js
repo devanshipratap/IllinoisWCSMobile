@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, Image, Button  } from 'react-native';
 import * as Google from 'expo-google-app-auth';
 import { clientId } from '../auth.json';
+import QRCode from 'react-native-qrcode-svg';
 
 export default class Login extends Component {
     constructor(props) {
@@ -9,6 +10,7 @@ export default class Login extends Component {
         this.state = {
             signedIn: false,
             name: "",
+            email: ""
         }
     }
 
@@ -23,7 +25,9 @@ export default class Login extends Component {
                 this.setState({
                     signedIn: true,
                     name: result.user.name,
-                })
+                    email: result.user.email
+                });
+                console.log(result.user)
             } else {
                 console.log("Request cancelled")
             }
@@ -36,7 +40,7 @@ export default class Login extends Component {
         return (
             <View style={styles.container}>
                 {this.state.signedIn
-                    ? ( <LoggedInPage name={this.state.name} />)
+                    ? ( <LoggedInPage name={this.state.name} email={this.state.email}/>)
                     : ( <LoginPage signIn={this.signIn} /> )}
             </View>
         )
@@ -51,12 +55,19 @@ const LoginPage = props => {
         </View>
     )
 };
-
 const LoggedInPage = props => {
     return (
         <View>
-            <Image style={styles.image} source={require('../illinoiswcs.png')}/>
-            <Text style={styles.header}>Welcome! {props.name}</Text>
+            <Image style={styles.image2} source={require('../illinoiswcs.png')}/>
+            <Text style={styles.welcome}>Welcome!</Text>
+            <Text style={styles.welcome}>{props.name}</Text>
+            <QRCode
+                value={props.email}
+            />
+            {/*<div id="qrcode"></div>*/}
+            {/*<script type="text/javascript">*/}
+            {/*    new QRCode(document.getElementById("qrcode"), {props.email});*/}
+            {/*</script>*/}
         </View>
     )
 };
@@ -64,6 +75,7 @@ const LoggedInPage = props => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        // backgroundColor: "#ffe6e6",
         backgroundColor: "#ffff",
         alignItems: "center",
         justifyContent: "center"
@@ -74,11 +86,24 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         flex: 0.2
     },
+    welcome: {
+        fontSize: 18,
+        alignItems: "center",
+        justifyContent: "center",
+        flex: 0.1
+    },
     image: {
         marginTop: 15,
         width: 210,
         alignItems: "center",
         justifyContent: "center",
         flex: 0.25
+    },
+    image2: {
+        marginTop: 15,
+        width: 210,
+        alignItems: "center",
+        justifyContent: "center",
+        flex: 0.15
     }
 });
