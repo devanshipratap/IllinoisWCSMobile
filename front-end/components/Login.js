@@ -3,7 +3,7 @@
 * */
 
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image, Button  } from 'react-native';
+import { StyleSheet, View, Image, Button  } from 'react-native';
 import Home from './Home'
 import { signInHelper } from '../SignIn'
 

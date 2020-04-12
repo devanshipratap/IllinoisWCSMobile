@@ -3,7 +3,7 @@
 * */
 
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image, Button  } from 'react-native';
+import { StyleSheet, Text, View, Image  } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 
 export default class Home extends Component {
