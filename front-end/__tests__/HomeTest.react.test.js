@@ -2,12 +2,13 @@
 
 import 'react-native';
 import React from 'react';
-import QR from '../components/QR';
+import Home from '../components/Home';
 import renderer from 'react-test-renderer';
 
-it('QR code page renders correctly', () => {
+// Snapshot test for home page
+it('Home page renders correctly', () => {
     const tree = renderer
-        .create(<QR/>)
+        .create(<Home/>)
         .toJSON();
     expect(tree).toMatchSnapshot();
 });
