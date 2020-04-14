@@ -4,27 +4,15 @@
 * */
 
 import React, {Component} from 'react';
-import { StyleSheet, View  } from 'react-native';
-import Login from './components/Login.js'
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import MainTabNavigator from './navigation/MainTabNavigator';
 
-export default class App extends Component {
-
-  // Render the view for the first screen
-  render() {
-    return (
-        <View style={styles.container}>
-          <Login/>
-        </View>
-    )
-  }
-}
-
-// Style sheet
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#ffff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
+// Create a navigation bar for the app
+const RootStack = createSwitchNavigator({
+  Main: MainTabNavigator,
 });
+
+// Create a container for the app
+const App = createAppContainer(RootStack);
+export default App;
+
