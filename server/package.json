@@ -1,0 +1,19 @@
+{
+  "name": "IllinoisWCSMobileServer",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon --exec node server.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.4.18",
+    "nodemon": "^1.11.0"
+  },
+  "devDependencies": {
+    "@shelf/jest-mongodb": "^1.1.5",
+    "jest": "^25.3.0"
+  }
+}
